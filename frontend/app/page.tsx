@@ -100,55 +100,53 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-white">
-      <div className="relative">
-        <div
-          onClick={handleConnect}
-          className="flex h-64 w-64 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
-        >
-          <video
-            className="h-56 w-56 rounded-full object-cover"
-            src="/icon.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-        </div>
-        
-        {/* Disconnect button - appears with smooth animation when connected */}
-        <button
-          onClick={handleDisconnect}
-          className={`
-            absolute top-2 right-2
-            flex items-center justify-center
-            w-14 h-14 rounded-full
-            bg-black/80 hover:bg-black
-            text-white
-            transition-all duration-300 ease-in-out
-            ${isConnected 
-              ? 'opacity-100 scale-100 pointer-events-auto' 
-              : 'opacity-0 scale-75 pointer-events-none'
-            }
-          `}
-          aria-label="Disconnect"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
+    <div className="relative inline-block">
+      <div
+        onClick={handleConnect}
+        className="flex h-64 w-64 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
+      >
+        <video
+          className="h-56 w-56 rounded-full object-cover"
+          src="/icon.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
       </div>
-    </main>
+      
+      {/* Disconnect button - appears with smooth animation when connected */}
+      <button
+        onClick={handleDisconnect}
+        className={`
+          absolute top-2 right-2
+          flex items-center justify-center
+          w-14 h-14 rounded-full
+          bg-black/80 hover:bg-black
+          text-white
+          transition-all duration-300 ease-in-out
+          ${isConnected 
+            ? 'opacity-100 scale-100 pointer-events-auto' 
+            : 'opacity-0 scale-75 pointer-events-none'
+          }
+        `}
+        aria-label="Disconnect"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   );
 }
