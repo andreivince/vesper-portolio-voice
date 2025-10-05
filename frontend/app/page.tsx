@@ -20,8 +20,6 @@ export default function Home() {
       const data = await tokenResponse.json();
       const EPHEMERAL_KEY = data.value;
 
-      console.log("Got ephemeral key:", EPHEMERAL_KEY);
-
       // Create a peer connection (WebRTC)
       const pc = new RTCPeerConnection();
       peerConnectionRef.current = pc;
@@ -31,7 +29,6 @@ export default function Home() {
       audioElement.autoplay = true;
       audioElementRef.current = audioElement;
       pc.ontrack = (e) => {
-        console.log("Received audio track from OpenAI");
         audioElement.srcObject = e.streams[0];
       };
 
@@ -46,22 +43,15 @@ export default function Home() {
       dataChannelRef.current = dc;
 
       dc.addEventListener("open", () => {
-        console.log("Data channel opened");
         setIsConnected(true);
       });
 
       dc.addEventListener("message", (e) => {
         const event = JSON.parse(e.data);
-        console.log("Received event:", event);
-        
-        // Debug response.done to see why no audio
-        if (event.type === "response.done") {
-          console.log("RESPONSE.DONE details:", JSON.stringify(event.response, null, 2));
-        }
+        // Event handling without logging sensitive data
       });
 
       dc.addEventListener("close", () => {
-        console.log("Data channel closed");
         setIsConnected(false);
       });
 
@@ -69,7 +59,6 @@ export default function Home() {
       const offer = await pc.createOffer();
       await pc.setLocalDescription(offer);
 
-      console.log("Sending SDP to OpenAI...");
       const sdpResponse = await fetch("https://api.openai.com/v1/realtime/calls", {
         method: "POST",
         body: offer.sdp,
@@ -89,7 +78,6 @@ export default function Home() {
       };
       await pc.setRemoteDescription(answer);
 
-      console.log("Connected to OpenAI Realtime API via WebRTC!");
     } catch (error) {
       console.error("Connection error:", error);
       setIsConnected(false);
@@ -109,7 +97,6 @@ export default function Home() {
       audioElementRef.current.srcObject = null;
     }
     setIsConnected(false);
-    console.log("Disconnected from voice assistant");
   }
 
   return (
