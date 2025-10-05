@@ -2,11 +2,11 @@
 
 :root {
   color: #171717;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 @theme inline {
-  --color-background: #ffffff;
+  --color-background: transparent;
   --color-foreground: #171717;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -14,7 +14,7 @@
 
 body {
   margin: 0;
-  background-color: #ffffff;
+  background-color: transparent;
   color: #171717;
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
 }
