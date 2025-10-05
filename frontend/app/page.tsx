@@ -13,7 +13,8 @@ export default function Home() {
 
     try {
       // Get ephemeral token from backend
-      const tokenResponse = await fetch("http://localhost:8000/api/session", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const tokenResponse = await fetch(`${apiUrl}/api/session`, {
         method: "POST",
       });
       const data = await tokenResponse.json();
