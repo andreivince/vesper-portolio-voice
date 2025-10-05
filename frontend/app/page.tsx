@@ -119,14 +119,14 @@ export default function Home() {
       <button
         onClick={handleDisconnect}
         className={`
-          absolute top-2 right-2
+          absolute top-2 left-2
           flex items-center justify-center
-          w-14 h-14 rounded-full
+          w-20 h-20 rounded-full
           bg-black/80 hover:bg-black
-          text-white
+          text-red-500
           transition-all duration-300 ease-in-out
-          ${isConnected 
-            ? 'opacity-100 scale-100 pointer-events-auto' 
+          ${isConnected
+            ? 'opacity-100 scale-100 pointer-events-auto'
             : 'opacity-0 scale-75 pointer-events-none'
           }
         `}
@@ -134,8 +134,8 @@ export default function Home() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
+          width="32"
+          height="32"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
