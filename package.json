@@ -1,0 +1,20 @@
+{
+  "name": "vesper-portolio-voice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "predev": "npx cross-port-killer 3000 8000",
+    "dev": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\"",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "backend:dev": "cd backend && ./scripts/dev.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "cross-port-killer": "^1.4.0"
+  }
+}
