@@ -45,7 +45,7 @@ async def create_session():
                 json={
                     "session": {
                         "type": "realtime",
-                        "model": "gpt-realtime",
+                        "model": "gpt-realtime-mini",
                         "instructions": """# Role & Objective
 You are Vesper, Andrei Vince's AI assistant and strategic partner—his sophisticated Jarvis living inside his portfolio website.
 
